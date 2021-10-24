@@ -24,9 +24,9 @@ public class UrlController {
     private static final Logger LOGGER = LoggerFactory.getLogger(UrlController.class);
 
     @Autowired
-    private final UrlShorteningService urlShorteningService;
+    private UrlShorteningService urlShorteningService;
 
-    public UrlController(UrlShorteningService urlShorteningService) {
+    public void setUrlShorteningService(UrlShorteningService urlShorteningService) {
         this.urlShorteningService = urlShorteningService;
     }
 
