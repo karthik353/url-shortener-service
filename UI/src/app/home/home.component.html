@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row form-group" style="margin: 25px 0;">
+        <div class="col-8" style="padding: 0">
+            <input class="form-control" type="text" [(ngModel)]="inputUrl" placeholder="Enter the Original URL" />
+        </div>
+        <div class="col-4 btn-group">
+            <button class="form-control btn btn-primary" (click)="submitChanges()">Generate Short
+                URL</button>&nbsp;&nbsp;
+            <button class="form-control btn btn-danger" (click)="urlDetails=null; errorMessage=''">Clear</button>
+        </div>
+    </div>
+    <div class="display-details" *ngIf="urlDetails!==null">
+        <div class="row">
+            <div>
+                <label>Shortened URL: </label>&nbsp;&nbsp;<a [href]="shortenedUrl" target="_blank">{{shortenedUrl}}</a>
+            </div>
+        </div>
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="errorMessage.length!=0">
+        {{errorMessage}}
+    </div>
+    <div>
+        <ag-grid-angular class="ag-theme-balham url-grid" [gridOptions]="gridOptions">
+        </ag-grid-angular>
+    </div>
+</div>

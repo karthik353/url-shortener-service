@@ -1,0 +1,27 @@
+.url-grid {
+    width: 100% !important;
+    height: 355px !important;
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+.display-details {
+    width: auto;
+    height: fit-content !important;
+    padding: 10px;
+    margin: auto;
+    border: 5px solid gray;
+}
+
+.container {
+    max-width: 85%;
+}
+
+.alert {
+    max-height: fit-content;
+    padding: 8px;
+}
+
+.btn {
+    font-size: smaller;
+}
