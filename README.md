@@ -40,6 +40,11 @@ _URL Shortener Utility_ requires [Node.js](https://nodejs.org/) v14.15+ to run.
    docker-compose up -d
    # -d option helps run the container in the background
    ```
+   
+3. Hit the following URL on the browser
+   ```text
+   http://localhost:9900
+   ```
 
 ## Monitoring
 
