@@ -1,0 +1,43 @@
+version: "3"
+services:
+  database:
+    image: "mongo"
+    container_name: "db"
+    environment:
+      - MONGO_INITDB_DATABASE=url-db
+    volumes:
+      - ./mongo-volume:/data/db
+    ports:
+      - "9000:27017"
+
+  application:
+    build: ./application/
+    image: "service"
+    container_name: "service"
+    environment:
+      - DATABASE_URL=database
+    ports:
+      - "8080:8080"
+    depends_on:
+      - "database"
+    command: >
+        /bin/sh -c "
+          sleep 15;
+          java -Ddb.url=$${DATABASE_URL} -jar /app.jar;
+        "
+    healthcheck:
+      test: "curl -f localhost:8080/actuator/info"
+      interval: "10s"
+      timeout: "3s"
+      start_period: "5s"
+      retries: 3
+
+  UI:
+    build: ./UI/
+    image: "ui"
+    container_name: "ui"
+    ports:
+    - "9900:80"
+    depends_on:
+      - database
+      - application
